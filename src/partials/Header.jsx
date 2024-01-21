@@ -5,15 +5,25 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <header>
-      <div className="nav-container">
-        <nav>
-          <ul className="nav-list">
-            <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-      </div>
+        <div className="nav-container">
+          <h1>Your Company</h1>
+          <nav>
+            <ul className="nav-list">
+              <li className="nav-item">
+                <a href="#" className="nav-link">Home</a>
+              </li>
+              <li className="nav-item">
+                <a href="#features" className="nav-link">Features</a>
+              </li>
+              <li className="nav-item">
+                <a href="#about" className="nav-link">About Us</a>
+              </li>
+              <li className="nav-item">
+                <a href="#contact" className="nav-link">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
     </header>
   );
 };
