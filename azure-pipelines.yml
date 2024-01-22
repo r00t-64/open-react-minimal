@@ -1,0 +1,17 @@
+---
+trigger:
+- main
+
+pool:
+  name: kubernetes-spsa
+  
+steps:
+- task: CopyFiles@2
+  inputs:
+    contents:
+      *.py
+    targetFolder: $(Build.ArtifactStagingDirectory)
+-task: PublishBuildArtifacts@1
+ inputs:
+   pathtoPublish: $(Build.ArtifactStagingDirectory)
+   artifactName: MyBuildOptions
