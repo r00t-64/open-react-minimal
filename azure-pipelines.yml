@@ -3,7 +3,7 @@ trigger:
 - main
 
 pool:
-  name: kubernetes-spsa
+  name: react-pool
   
 steps:
 - task: CopyFiles@2
