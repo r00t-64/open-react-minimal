@@ -4,14 +4,31 @@ trigger:
 
 pool:
   name: react-pool
-  
-steps:
-- task: CopyFiles@2
-  inputs:
-    contents:
-      *.py
-    targetFolder: $(Build.ArtifactStagingDirectory)
--task: PublishBuildArtifacts@1
- inputs:
-   pathtoPublish: $(Build.ArtifactStagingDirectory)
-   artifactName: MyBuildOptions
+
+jobs:
+- job: BuildAndDeployReactApp
+  displayName: 'Build and Deploy React App'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '20.x'
+    displayName: 'Install Node.js'
+
+  - script: npm install
+    displayName: 'Install Dependencies'
+
+  - script: npm run build
+    displayName: 'Build React App'
+
+  - task: CopyFiles@2
+    inputs:
+      contents:
+        dist/**  # Adjust this based on your React app's build output
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: 'ReactApp'
+
+  # Add deployment steps according to your deployment strategy
